@@ -23,6 +23,7 @@ function getAllValues(masA, masB){
         if(mas.indexOf(masB[j])===-1)
             mas[index++]=masB[j];
 
+    forDeleteExtraComma(mas);
     return mas;
 }
 
@@ -36,6 +37,7 @@ function getCommonValues(masA, masB){
     return mas;
 }
 
+//Симетрична різниця
 function getDifferentValues(masA, masB){
     let mas=getFirstFieldValues(masA, masB);
 
@@ -43,6 +45,7 @@ function getDifferentValues(masA, masB){
         if(masA.indexOf(masB[j])===-1 && mas.indexOf(masB[j])===-1)
             mas[index++]=masB[j];
 
+    forDeleteExtraComma(mas);
     return mas;
 }
 
@@ -56,11 +59,17 @@ function getFirstFieldValues(masA, masB){
     return mas;
 }
 
+function forDeleteExtraComma(mas){
+    if(mas[0]==='')
+        mas.splice(0,1);
+    if(mas[mas.length-1]==='')
+        mas.splice(mas.length-1,1)
+}
 
 function callFunctions(){
     let masA = A.value.split(',');
     let masB = B.value.split(',');
-    switch (select.selectedIndex) {
+    switch (select.selectedIndex){
         case 0:
             C.value = getAllValues(masA, masB);
             div.style.backgroundPosition = '0 0';
