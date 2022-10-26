@@ -50,6 +50,16 @@ function getDifferentValues(masA, masB){
     return mas;
 }
 
+//Різниця
+function getFirstFieldValues(masA, masB){
+    let mas = []
+    for(let i=0, index=0; i<masA.length; i++)
+        if(masB.indexOf(masA[i])===-1 && mas.indexOf(masA[i])===-1)
+            mas[index++]=masA[i];
+
+    return mas;
+}
+
 function callFunctions(){
     let masA = A.value.split(',');
     let masB = B.value.split(',');
@@ -65,6 +75,10 @@ function callFunctions(){
         case 2:
             C.value = getDifferentValues(masA, masB);
             div.style.backgroundPosition = '-400px 0';
+            break;
+        case 3:
+            C.value = getFirstFieldValues(masA, masB);
+            div.style.backgroundPosition = '-600px 0';
             break;
     }
 }
