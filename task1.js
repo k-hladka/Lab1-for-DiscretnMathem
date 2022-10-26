@@ -26,6 +26,16 @@ function getAllValues(masA, masB){
     return mas;
 }
 
+//Перетин
+function getCommonValues(masA, masB){
+    let mas=[];
+    for(let j=0, index=0; j<masB.length; j++)
+        if(masA.indexOf(masB[j])!==-1 && mas.indexOf(masB[j])===-1)
+            mas[index++]=masB[j];
+
+    return mas;
+}
+
 function callFunctions(){
     let masA = A.value.split(',');
     let masB = B.value.split(',');
@@ -33,6 +43,10 @@ function callFunctions(){
         case 0:
             C.value = getAllValues(masA, masB);
             div.style.backgroundPosition = '0 0';
+            break;
+        case 1:
+            C.value = getCommonValues(masA, masB);
+            div.style.backgroundPosition = '-200px 0';
             break;
     }
 }
